@@ -1,3 +1,5 @@
+Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docker-machines)
+
 **Example deployment of a docker-compose V3 stack onto a 1.13+ swarm**
 
 1. build example stack: ```./run-swarm.sh build```
