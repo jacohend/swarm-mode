@@ -1,12 +1,12 @@
 **Example deployment of a docker-compose V3 stack onto a 1.13+ swarm**
 
-* build example stack: ./run-swarm.sh build
+* build example stack: ```./run-swarm.sh build```
 
-* run stack on swarm (ignore errors about pre-existing stacks): ./run-swarm run
+* run stack on swarm (ignore errors about pre-existing stacks): ```./run-swarm run```
 
-* remove stack from swarm: ./run-swarm rm
+* remove stack from swarm: ```./run-swarm rm```
 
-* scale example service: ./run-swarm scale
+* scale example service: ```./run-swarm scale```
 
 **To run this or your own example on an AWS Swarm:**
 
