@@ -8,6 +8,7 @@ run apt-get install -y libpq-dev
 run apt-get install -y libtcmalloc-minimal4
 run apt-get purge -y libopenblas-dev
 run easy_install pip
+run pip install Flask
 
 RUN mkdir -p /app
 ADD ./module/* app/

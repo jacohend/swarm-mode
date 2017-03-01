@@ -11,8 +11,6 @@ services:
             placement:
                 constraints: [node.role == manager]
     module:
-        build:
-          context: ../
-          dockerfile: Dockerfile
+        image: module:latest
         ports:
           - "80:80"
