@@ -4,6 +4,8 @@
 
 1. run stack on swarm (ignore errors about pre-existing stacks): ```./run-swarm run```
 
+1. After a few seconds, test service ```curl localhost:8080```
+
 1. scale example service: ```./run-swarm scale```
 
 1. remove stack from swarm: ```./run-swarm rm```
