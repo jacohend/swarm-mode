@@ -2,7 +2,7 @@
 
 * build example stack: ./run-swarm.sh build
 
-* run stack on swarm: ./run-swarm run
+* run stack on swarm (ignore errors about pre-existing stacks): ./run-swarm run
 
 * remove stack from swarm: ./run-swarm rm
 
