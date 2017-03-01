@@ -13,4 +13,23 @@ services:
     module:
         image: module:latest
         ports:
-          - "80:80"
+          - "8080:8080"
+        deploy:
+            mode: replicated
+            replicas: 1
+            labels: [APP=SERVER]
+          # service restart policy
+            restart_policy:
+                condition: on-failure
+          # service update configuration
+            update_config:
+                parallelism: 1
+                delay: 5s
+                failure_action: continue
+                max_failure_ratio: 0.3
+          # placement constraint - in this case on 'worker' nodes only  
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8080"]
+            interval: 5s
+            timeout: 10s
+            retries: 5
