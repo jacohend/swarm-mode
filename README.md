@@ -1,4 +1,4 @@
-Example deployment of a docker-compose V3 stack onto a 1.13+ swarm mode
+Example deployment of a docker-compose V3 stack onto a 1.13+ swarm
 
 build example stack: ./run-swarm.sh build
 run stack on swarm: ./run-swarm run
