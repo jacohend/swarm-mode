@@ -139,8 +139,8 @@ aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protoco
 for i in $(seq 1 $NODES)
 do  
     #set env variables
-	NODE="NODE-${AWS_DEFAULT_REGION}-${i}"
-	docker-machine create --driver amazonec2 --engine-opt experimental=true --engine-opt metrics-addr=0.0.0.0:4999 --amazonec2-security-group $AWS_SECURITY_GROUP --amazonec2-use-private-address=true --amazonec2-instance-type $AWS_INSTANCE_TYPE $NODE
+    NODE="NODE-${AWS_DEFAULT_REGION}-${i}"
+    docker-machine create --driver amazonec2 --engine-opt experimental=true --engine-opt metrics-addr=0.0.0.0:4999 --amazonec2-security-group $AWS_SECURITY_GROUP --amazonec2-use-private-address=true --amazonec2-instance-type $AWS_INSTANCE_TYPE $NODE
     docker-machine ssh $NODE sudo usermod -a -G docker ubuntu || true
     docker-machine ssh $NODE sudo gpasswd -a ubuntu docker 
     docker-machine restart $NODE
@@ -161,28 +161,26 @@ do
     eval $(docker-machine env $NODE)
     echo $JOIN_IP
 
-	#construct aws service url
+     #construct aws service url in case you need to access aws services
     AWS_BASE="$AWS_ID.$AWS_SERVICE.$AWS_REGION.$AWS_DOMAIN"
 
     #install emacs
     docker-machine ssh $NODE sudo apt-get -y update
-	sleep 10 
-	docker-machine ssh $NODE sudo apt-get -y install emacs24-nox vim clamav awscli
+    sleep 10 
+    docker-machine ssh $NODE sudo apt-get -y install emacs24-nox vim clamav awscli
 
-	if [[ $i == 1  ]]; then
+    if [[ $i == 1  ]]; then
         set -e
         echo "host: $HOST_IP"
         echo "join: $JOIN_IP"
-
-        #start the agent
-        docker-machine ssh $NODE docker network create -d overlay underwyre
+        #edit in host setup commands here
     fi
 
     if [[ $i > 1 ]]; then
         set -e
         echo "host: $HOST_IP"
         echo "join: $JOIN_IP"
-         #start the agent
+        #edit in host setup commands here
 
         #SWAAAARM
         docker-machine ssh $NODE docker swarm join --token $CLIENT_TOKEN $JOIN_IP:2377 --advertise-addr $HOST_IP:2377 --listen-addr $HOST_IP:2377 || true
