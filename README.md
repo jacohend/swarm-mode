@@ -13,9 +13,9 @@ Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docke
 1. remove stack from swarm: ```./run-swarm.sh rm```
 
 
-**To run this or your own example on an AWS Swarm:**
+**To run this or your own example on an AWS EC2 Swarm:**
 
-1. Edit your AWS credentials into scripts/swarm_setup.sh and make sure the awscli binary is setup for your aws account. 
+1. Edit your AWS credentials and desired EC2 configuration flags into scripts/swarm_setup.sh and make sure the awscli binary is setup for your aws account. 
 
 1. Execute ```./swarm_setup.sh``` to create a multi-host swarm cluster to your specification
 
