@@ -8,7 +8,7 @@ services:
         ports:
             - "9000:9000"
         deploy:
-            placement:
+            placement: #placement constraint - in this case on 'worker' nodes only  
                 constraints: [node.role == manager]
     module:
         image: module:latest
@@ -27,7 +27,6 @@ services:
                 delay: 5s
                 failure_action: continue
                 max_failure_ratio: 0.3
-          # placement constraint - in this case on 'worker' nodes only  
         healthcheck:
             test: ["CMD", "curl", "-f", "http://localhost:8080"]
             interval: 5s
