@@ -13,7 +13,7 @@ Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docke
 1. remove stack from swarm: ```./run-swarm.sh rm```
 
 
-**To run this or your own example on an AWS EC2 Swarm:**
+**To run this or your own example on an AWS EC2 Swarm using Docker-Machine:**
 
 1. Edit your AWS credentials and desired EC2 configuration flags into scripts/swarm_setup.sh and make sure the awscli binary is setup for your aws account. 
 
