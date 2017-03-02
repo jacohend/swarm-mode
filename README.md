@@ -21,4 +21,4 @@ Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docke
 
 1. Access your manager node using ```docker-machine ssh <NODE_NAME>``` 
 
-1. Copy the repo onto your swarm manager and execute ```./run-swarm.sh run```
+1. Copy the repo onto your swarm manager and execute ```./run-swarm.sh run```. The first node created will be the Swarm Manager.
