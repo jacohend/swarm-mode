@@ -1,4 +1,4 @@
-Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docker-machines)
+Prerequisites: docker-engine 1.13, bash, awscli (if you're spinning up aws docker-machines). Includes portainer for example swarm management. 
 
 **Example deployment of a docker-compose V3 stack onto a 1.13+ swarm**
 
