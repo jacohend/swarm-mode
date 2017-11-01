@@ -10,8 +10,6 @@ if [[ $? != 4  ]]; then
 fi
 SHORT=mc
 LONG=nodes:,aws_id:,aws_service:,aws_region:,aws_key:,aws_secret:,aws_default_region:,aws_ami:,host_ip:,join_ip:,ssh_key:,aws_vpc:,interface:,network:,ssl_cert:,ssl_lb:,ssl_host:,nodes:,master,client
-AWS_ID=
-AWS_SERVICE=
 AWS_REGION=
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
@@ -24,10 +22,7 @@ AWS_INSTANCE_PROFILE=
 
 AWS_AMI=
 AWS_VPC_ID=
-AWS_DOMAIN=
 AWS_SUBNET_ID=
-DOMAIN=
-INTERFACE=
 HOST_IP=
 PARSED=`getopt --options $SHORT --longoptions $LONG --name "$0" -- "$@"`
 NODES=3
@@ -80,16 +75,8 @@ while true; do
             JOIN_IP="$2"
             shift 2
             ;;
-        --interface)
-            INTERFACE="$2"
-            shift 2
-            ;;
         --network)
             NETWORK="$2"
-            shift 2
-            ;;
-        --domain)
-            DOMAIN="$2"
             shift 2
             ;;
         --ssl_host)
@@ -160,9 +147,6 @@ do
 	fi
     eval $(docker-machine env $NODE)
     echo $JOIN_IP
-
-     #construct aws service url in case you need to access aws services
-    AWS_BASE="$AWS_ID.$AWS_SERVICE.$AWS_REGION.$AWS_DOMAIN"
 
     #install emacs
     docker-machine ssh $NODE sudo apt-get -y update
